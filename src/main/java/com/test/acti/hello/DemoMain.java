@@ -31,17 +31,20 @@ public class DemoMain {
 
         ProcessEngine processEngine = getProcessEngine();
 
-        String name = processEngine.getName();
-        String version = processEngine.VERSION;
-
-        log.info("name : {}  version: {}", name, version);
-
 
         ProcessDefinition processDefinition = getProcessDefinition(processEngine);
 
 
         ProcessInstance processInstance = getProcessInstance(processEngine, processDefinition);
 
+        executeTask(processEngine, processInstance);
+
+
+//        log.info("process start {}", processInstance.getProcessDefinitionKey());
+        log.info("end program");
+    }
+
+    private static void executeTask(ProcessEngine processEngine, ProcessInstance processInstance) throws ParseException {
         Scanner scanner = new Scanner(System.in);
         while (processInstance != null && !processInstance.isEnded()) {
             TaskService taskService = processEngine.getTaskService();
@@ -77,10 +80,7 @@ public class DemoMain {
             }
             log.info("task size: {}", taskList.size());
         }
-
-
-//        log.info("process start {}", processInstance.getProcessDefinitionKey());
-        log.info("end program");
+        scanner.close();
     }
 
     private static ProcessInstance getProcessInstance(ProcessEngine processEngine, ProcessDefinition processDefinition) {
@@ -101,6 +101,10 @@ public class DemoMain {
 
     private static ProcessEngine getProcessEngine() {
         ProcessEngineConfiguration cfg = ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();
-        return cfg.buildProcessEngine();
+        ProcessEngine processEngine = cfg.buildProcessEngine();
+        String version = processEngine.VERSION;
+        String name = processEngine.getName();
+        log.info("name : {}  version: {}", name, version);
+        return processEngine;
     }
 }
