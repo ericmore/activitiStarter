@@ -10,6 +10,11 @@
         <property name="jdbcDriver" value="org.h2.Driver"></property>
         <property name="jdbcUsername" value="sa"></property>
         <property name="jdbcPassword" value=""></property>
+        <property name="commandInvoker" ref="commandInvoker"/>
+    </bean>
+
+    <bean id="commandInvoker" class="com.eric.acti.hello.interceptor.MDCCommandInvoker">
+
     </bean>
 
 <!--    mysql-->

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
+    <property name="std" value="%msg%n"/>
+    <property name="mdc" value="%msg%n ProcessDefinitionId=%X{mdcProcessDefinitionID} executionId=%X{mdcExecutionId} mdcProcessInstanceID=%X{mdcProcessInstanceID} "/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                 %msg%n
+               ${mdc}
             </Pattern>
         </layout>
     </appender>
 
-    <logger name="com.eric.acti.hello" level="debug" additivity="false">
+    <logger name="com.eric.acti.hello" level="info" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
 
