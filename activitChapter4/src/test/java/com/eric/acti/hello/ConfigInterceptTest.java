@@ -2,15 +2,12 @@ package com.eric.acti.hello;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.activiti.engine.event.EventLogEntry;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.test.ActivitiRule;
 import org.activiti.engine.test.Deployment;
 import org.junit.Rule;
 import org.junit.Test;
-
-import java.util.List;
 
 @Slf4j
 public class ConfigInterceptTest {
