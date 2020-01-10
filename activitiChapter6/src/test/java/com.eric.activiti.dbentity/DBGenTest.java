@@ -17,6 +17,7 @@ public class DBGenTest {
     public void testByteArray() {
         activitiRule.getRepositoryService().createDeployment().name("测试部署")
                 .addClasspathResource("simpleProcess.bpmn20.xml")
+                .addClasspathResource("second_approve.bpmn20.xml")
                 .deploy();
     }
 
