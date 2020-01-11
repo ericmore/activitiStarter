@@ -40,5 +40,30 @@ public class DBRuntimeTest {
 
     }
 
+    @Test
+    public void testMessage(){
+        activitiRule.getRepositoryService().createDeployment()
+                .addClasspathResource("simple-process-message.bpmn20.xml")
+                .deploy();
+    }
+
+    @Test
+    public void testMessageReceived(){
+        activitiRule.getRepositoryService().createDeployment()
+                .addClasspathResource("simple-process-message-received.bpmn20.xml")
+                .deploy();
+        ProcessInstance processInstance = activitiRule.getRuntimeService().startProcessInstanceByKey("myProcess");
+
+    }
+
+    @Test
+    public void testJob() throws InterruptedException {
+        activitiRule.getRepositoryService().createDeployment()
+                .addClasspathResource("simpleProcess-job.bpmn20.xml")
+                .deploy();
+        Thread.sleep(30 * 1000);
+
+    }
+
 
 }
