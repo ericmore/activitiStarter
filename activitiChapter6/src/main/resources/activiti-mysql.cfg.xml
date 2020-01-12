@@ -11,6 +11,8 @@
         <property name="dataSource" ref="dataSource"></property>
         <property name="dbHistoryUsed" value="true"/>
         <property name="dbIdentityUsed" value="true"/>
+        <property name="historyLevel" value="FULL"/>
+        <property name="enableDatabaseEventLogging" value="true"/>
     </bean>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
