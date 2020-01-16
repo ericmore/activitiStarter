@@ -14,7 +14,7 @@ import java.util.List;
 public class TimerEventTest {
 
     @Rule
-    public ActivitiRule activitiRule = new ActivitiRule();
+    public ActivitiRule activitiRule = new ActivitiRule("activiti-mysql.cfg.xml");
 
     @Test
     @Deployment(resources = {"my-process-timer-boundary.bpmn20.xml"})

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    mysql -->
+    <bean id="processEngineConfiguration"
+          class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+
+        <property name="databaseSchemaUpdate" value="true"></property>
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="dbHistoryUsed" value="true"/>
+        <property name="dbIdentityUsed" value="true"/>
+        <property name="historyLevel" value="FULL"/>
+        <property name="enableDatabaseEventLogging" value="true"/>
+    </bean>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/activiti6?useUnicode=true&amp;nullCatalogMeansCurrent=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC"></property>
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="Apple1234"></property>
+        <property name="initialSize" value="1"></property>
+        <property name="maxActive" value="10"></property>
+        <property name="filters" value="stat, slf4j"></property>
+    </bean>
+
+</beans>
