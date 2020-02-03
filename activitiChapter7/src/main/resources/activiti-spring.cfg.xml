@@ -4,17 +4,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--    mysql -->
-<!--    <bean id="processEngineConfiguration"-->
-<!--          class="org.activiti.spring.SpringProcessEngineConfiguration">-->
+    <!--    <bean id="processEngineConfiguration"-->
+    <!--          class="org.activiti.spring.SpringProcessEngineConfiguration">-->
 
-<!--        <property name="databaseSchemaUpdate" value="true"></property>-->
-<!--        <property name="dataSource" ref="dataSource"></property>-->
-<!--        <property name="dbHistoryUsed" value="true"/>-->
-<!--        <property name="dbIdentityUsed" value="true"/>-->
-<!--        <property name="historyLevel" value="FULL"/>-->
-<!--        <property name="enableDatabaseEventLogging" value="true"/>-->
-<!--    </bean>-->
-
+    <!--        <property name="databaseSchemaUpdate" value="true"></property>-->
+    <!--        <property name="dataSource" ref="dataSource"></property>-->
+    <!--        <property name="dbHistoryUsed" value="true"/>-->
+    <!--        <property name="dbIdentityUsed" value="true"/>-->
+    <!--        <property name="historyLevel" value="FULL"/>-->
+    <!--        <property name="enableDatabaseEventLogging" value="true"/>-->
+    <!--    </bean>-->
 
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -28,29 +27,29 @@
         <property name="filters" value="stat, slf4j"></property>
     </bean>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
-        <property name="dataSource" ref="dataSource" />
-        <property name="transactionManager" ref="transactionManager" />
-        <property name="databaseSchemaUpdate" value="true" />
-        <property name="asyncExecutorActivate" value="false" />
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="asyncExecutorActivate" value="false"/>
     </bean>
 
     <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
-        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
     </bean>
 
     <bean id="activitiRule" class="org.activiti.engine.test.ActivitiRule">
         <property name="processEngine" ref="processEngine"/>
     </bean>
 
-    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
-    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />
-    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />
-    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />
-    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
 
     <bean id="myJavaDelegate" class="com.eric.test.delegate.MyJavaDelegate"/>
 

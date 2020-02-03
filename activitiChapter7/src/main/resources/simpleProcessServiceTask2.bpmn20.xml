@@ -8,6 +8,7 @@
     <process id="myProcessActBehavior" name="My process" isExecutable="true">
         <startEvent id="startevent1" name="Start"></startEvent>
         <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="sometask"></sequenceFlow>
+
         <serviceTask id="sometask" name="Service Task"
                      activiti:class="com.eric.test.delegate.MyActivitiBehavior"></serviceTask>
 
